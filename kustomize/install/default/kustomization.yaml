@@ -17,6 +17,7 @@ resources:
 - ../crd
 - ../rbac/cluster
 - ../manager
+- ../namespace
 
 components:
 - ../components/images-by-tag
