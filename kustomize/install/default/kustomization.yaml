@@ -1,6 +1,6 @@
 kind: Kustomization
 
-namespace: postgres-operator
+namespace: crunchy-operator
 
 labels:
 - includeSelectors: false
@@ -11,7 +11,7 @@ labels:
 - includeSelectors: true
   includeTemplates: true
   pairs:
-    postgres-operator.crunchydata.com/control-plane: postgres-operator
+    postgres-operator.crunchydata.com/control-plane: crunchy-operator
 
 resources:
 - ../crd
@@ -33,5 +33,7 @@ patches:
           containers:
           - name: operator
             env:
+            - name: PGO_TARGET_NAMESPACES
+              value: "*"
             - name: PGO_FEATURE_GATES
               value: ""
